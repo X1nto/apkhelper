@@ -7,5 +7,5 @@ local.properties
 /captures
 .externalNativeBuild
 .cxx
-/apkhelper/src/main/java/com/xinto/apkhelper/Test.java
-/apkhelper/src/main/java/com/xinto/apkhelper/TestKt.kt
+apkhelper/src/main/java/com/xinto/apkhelper/Test.java
+apkhelper/src/main/java/com/xinto/apkhelper/TestKt.kt

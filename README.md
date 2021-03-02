@@ -1,8 +1,6 @@
 # APKHelper
 A simple library which allows you to install and uninstall apps on the device
 
-LIBRARY IS NOT PUBLISHED TO MAVEN YET
-
 ## Installation
 
 ### Groovy DSL
@@ -125,11 +123,11 @@ statusCallback = object : StatusCallback {
 ```
 A simpler listener allowing you to override only the methods you need
 ```kotlin
-statusCallback = object : SimpleStatusCallback() {
-    override fun onApkInstall(id: Int, context: Context) {
+setStatusCallback(
+    onInstall = { id, context ->
         Log.i(logTag, "Successfully installed an APK")
     }
-}
+)
 ```
 
 
@@ -253,14 +251,14 @@ statusCallback = object : StatusCallback {
 A simpler listener allowing you to override only the methods you need
 
 ```kotlin
-statusCallback = object : SimpleStatusCallback() {
-    override fun onApkInstall(id: Int, context: Context) {
+setStatusCallback(
+    onInstall = { id, context ->
         when (id) {
-            1 -> Log.i(logTag, "Failed to install the first APK")
+            1 -> Log.i(logTag, "Installed the first APK")
             2 -> Log.i(logTag, "Installed the second APK")
         }
     }
-}
+)
 ```
 </details>
 

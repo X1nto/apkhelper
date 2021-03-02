@@ -57,11 +57,9 @@ dependencies {
 ### Register a listener
 
 <details>
-
-<summary>Java<summary/>
-
+<summary>Java</summary>
 Listener with all methods required to be overriden
-
+    
 ```java
 VariableHolderKt.setStatusCallback(new StatusCallback() {
     @Override
@@ -85,26 +83,22 @@ VariableHolderKt.setStatusCallback(new StatusCallback() {
     }
 });
 ```
-
 A simpler listener allowing you to override only the methods you need
-
+    
 ```java
-
 VariableHolderKt.setStatusCallback(new SimpleStatusCallback() {
     @Override
     public void onApkInstall(int id, @NotNull Context context) {
         Log.i(VariableHolderKt.getLogTag(), "Successfully installed an APK"); 
     }
 });
-
 ```
 
 
 </details>
 
 <details>
-
-<summary>Kotlin<summary/>
+<summary>Kotlin</summary>
 
 Listener with all methods required to be overriden
 
@@ -127,16 +121,13 @@ statusCallback = object : StatusCallback {
     }
 }
 ```
-
 A simpler listener allowing you to override only the methods you need
-
 ```kotlin
 statusCallback = object : SimpleStatusCallback() {
     override fun onApkInstall(id: Int, context: Context) {
         Log.i(logTag, "Successfully installed an APK")
     }
 }
-
 ```
 
 
@@ -145,7 +136,7 @@ statusCallback = object : SimpleStatusCallback() {
 ### Register a listener for different callbacks
 
 <details>
-<summary>Java<summary/>
+<summary>Java</summary>
 
 Listener with all methods required to be overriden
 
@@ -200,7 +191,6 @@ VariableHolderKt.setStatusCallback(new StatusCallback() {
     }
 });
 ```
-
 A simpler listener allowing you to override only the methods you need
 
 ```java
@@ -222,7 +212,7 @@ VariableHolderKt.setStatusCallback(new SimpleStatusCallback() {
 </details>
 
 <details>
-<summary>Kotlin<summary/>
+<summary>Kotlin</summary>
 
 Listener with all methods required to be overriden
 
@@ -275,7 +265,7 @@ statusCallback = object : SimpleStatusCallback() {
 ### Install an APK
 
 <details>
-<summary>Java<summary/>
+<summary>Java</summary>
 
 ```java
 //Inside AppCompatActivity, can be done from anywhere where context is accessible
@@ -285,7 +275,7 @@ PMKt.installApk(getExternalFilesDir("apks").getPath() + "/someapk.apk", this, 0)
 </details>
 
 <details>
-<summary>Kotlin<summary/>
+<summary>Kotlin</summary>
 
 ```java
 //Inside AppCompatActivity, can be done from anywhere where context is accessible
@@ -297,7 +287,7 @@ installApk(getExternalFilesDir("apks")?.path + "/someapk.apk", this)
 ### Install split APKs
 
 <details>
-<summary>Java<summary/>
+<summary>Java</summary>
 
 ```java
 //Inside AppCompatActivity, can be done from anywhere where context is accessible
@@ -307,7 +297,7 @@ PMKt.installSplitApks(getExternalFilesDir("splitApks").getPath(), this, 0);
 </details>
 
 <details>
-<summary>Kotlin<summary/>
+<summary>Kotlin</summary>
 
 ```java
 //Inside AppCompatActivity, can be done from anywhere where context is accessible
@@ -319,7 +309,7 @@ installSplitApks(getExternalFilesDir("splitapks")?.path.toString(), this)
 ### Uninstall an app from the device
 
 <details>
-<summary>Java<summary/>
+<summary>Java</summary>
 
 ```java
 //Inside AppCompatActivity, can be done from anywhere where context is accessible
@@ -329,7 +319,7 @@ PMKt.uninstallApk("com.some.application", this, 0);
 </details>
 
 <details>
-<summary>Kotlin<summary/>
+<summary>Kotlin</summary>
 
 ```java
 //Inside AppCompatActivity, can be done from anywhere where context is accessible

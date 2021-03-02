@@ -7,7 +7,7 @@ import android.content.Context
  * Use this if you want to override certain methods only
  * @see StatusCallback
  */
-class SimpleStatusCallback : StatusCallback {
+open class SimpleStatusCallback : StatusCallback {
 
     override fun onApkInstall(
         id: Int,

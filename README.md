@@ -100,36 +100,24 @@ VariableHolderKt.setStatusCallback(new SimpleStatusCallback() {
 <details>
 <summary>Kotlin</summary>
 
-Listener with all methods required to be overriden
+This listener allows you to only provide callback for methods you actually need
 
-```kotlin
-statusCallback = object : StatusCallback {
-    override fun onApkInstall(id: Int, context: Context) {
-        Log.i(logTag, "Successfully installed an APK")
-    }
-
-    override fun onApkInstallFailed(error: String, id: Int, context: Context) {
-        Log.i(logTag, "Failed to install an APK: $error")
-    }
-
-    override fun onAppUninstall(id: Int, context: Context) {
-        Log.i(logTag, "Successfully uninstalled an app")
-    }
-
-    override fun onAppUninstallFailed(error: String, id: Int, context: Context) {
-        Log.i(logTag, "Failed to uninstall app: $error")
-    }
-}
-```
-A simpler listener allowing you to override only the methods you need
 ```kotlin
 setStatusCallback(
     onInstall = { id, context ->
         Log.i(logTag, "Successfully installed an APK")
+    },
+    onInstallFailed = { error, id, context ->
+        Log.i(logTag, "Failed to install an APK: $error")
+    },
+    onUninstall = { id, context ->
+        Log.i(logTag, "Successfully uninstalled an app")
+    },
+    onUninstallFailed = { error, id, context ->
+        Log.i(logTag, "Failed to uninstall app: $error")
     }
 )
 ```
-
 
 </details>
 
@@ -214,41 +202,7 @@ VariableHolderKt.setStatusCallback(new SimpleStatusCallback() {
 <details>
 <summary>Kotlin</summary>
 
-Listener with all methods required to be overriden
-
-```kotlin
-statusCallback = object : StatusCallback {
-    override fun onApkInstall(id: Int, context: Context) {
-        when (id) {
-            1 -> Log.i(logTag, "Installed the first APK")
-            2 -> Log.i(logTag, "Installed the second APK")
-        }
-    }
-
-    override fun onApkInstallFailed(error: String, id: Int, context: Context) {
-        when (id) {
-            1 -> Log.i(logTag, "Failed to install the first APK")
-            2 -> Log.i(logTag, "Failed to install the second APK")
-        }
-    }
-
-    override fun onAppUninstall(id: Int, context: Context) {
-        when (id) {
-            1 -> Log.i(logTag, "Uninstalled the first app")
-            2 -> Log.i(logTag, "Uninstalled the second app")
-        }
-    }
-
-    override fun onAppUninstallFailed(error: String, id: Int, context: Context) {
-        when (id) {
-            1 -> Log.i(logTag, "Failed to uninstall first app")
-            2 -> Log.i(logTag, "Failed to uninstall second app")
-        }
-    }
-}
-```
-
-A simpler listener allowing you to override only the methods you need
+This listener allows you to only provide callback for methods you actually need
 
 ```kotlin
 setStatusCallback(
@@ -257,9 +211,28 @@ setStatusCallback(
             1 -> Log.i(logTag, "Installed the first APK")
             2 -> Log.i(logTag, "Installed the second APK")
         }
+    },
+    onInstallFailed = { error, id, context ->
+        when (id) {
+            1 -> Log.i(logTag, "Failed to install the first APK")
+            2 -> Log.i(logTag, "Failed to install the second APK")
+        }
+    },
+    onUninstall = { id, context ->
+        when (id) {
+            1 -> Log.i(logTag, "Uninstalled the first app")
+            2 -> Log.i(logTag, "Uninstalled the second app")
+        }
+    },
+    onUninstallFailed = { error, id, context ->
+        when (id) {
+            1 -> Log.i(logTag, "Failed to uninstall first app")
+            2 -> Log.i(logTag, "Failed to uninstall second app")
+        }
     }
 )
 ```
+
 </details>
 
 ### Install an APK

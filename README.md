@@ -1,6 +1,8 @@
 # APKHelper
 A simple library which allows you to install and uninstall apps on the device
 
+LIBRARY IS NOT PUBLISHED TO MAVEN YET
+
 ## Installation
 
 ### Groovy DSL

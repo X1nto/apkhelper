@@ -31,7 +31,7 @@ import java.io.InputStream
  * Install a regular APK
  * @param apkPath The path to APK
  * @param context Application/Activity context
- * @param id ID of the installation, can be useful if you want to trigger different triggers after apk installation
+ * @param id ID of the installation, can be useful if you want to trigger different actions after apk installation
  */
 fun installApk(apkPath: String, context: Context, id: Int = 0) {
     installApk(File(apkPath), context, id)
@@ -41,7 +41,7 @@ fun installApk(apkPath: String, context: Context, id: Int = 0) {
  * Install a regular APK
  * @param apk The APK to install
  * @param context Application/Activity context
- * @param id ID of the installation, can be useful if you want to trigger different triggers after apk installation
+ * @param id ID of the installation, can be useful if you want to trigger different actions after apk installation
  */
 fun installApk(apk: File, context: Context, id: Int = 0) {
     val callbackIntent = Intent(context, AppInstallService::class.java).apply {
@@ -78,7 +78,7 @@ fun installApk(apk: File, context: Context, id: Int = 0) {
  * Install provided split APK files
  * @param apksPath path to a directory where multiple .apk files are located, library automatically filters out other file types but .apk (note that library doesn't support .apks file format)
  * @param context Application/Activity context
- * @param id ID of installation, can be useful if you want to trigger different triggers after apk installation
+ * @param id ID of installation, can be useful if you want to trigger different actions after apk installation
  * @throws IllegalArgumentException if apksPath is not a directory
  */
 @Throws(IllegalArgumentException::class)
@@ -95,7 +95,7 @@ fun installSplitApks(apksPath: String, context: Context, id: Int = 0) {
  * Install provided split APK files
  * @param apks list of split APKs to install, library automatically filters out other file types but .apk
  * @param context Application/Activity context
- * @param id ID of installation, can be useful if you want to trigger different triggers after apk installation
+ * @param id ID of installation, can be useful if you want to trigger different actions after apk installation
  */
 fun installSplitApks(apks: Array<File>, context: Context, id: Int = 0) {
     val callbackIntent = Intent(context, AppInstallService::class.java).apply {
@@ -132,7 +132,7 @@ fun installSplitApks(apks: Array<File>, context: Context, id: Int = 0) {
 /**
  * @param pkg Package to uninstall
  * @param context Application/Activity context
- * @param id ID of uninstallation, can be if you want to trigger different triggers after apk uninstallation
+ * @param id ID of uninstallation, can be if you want to trigger different actions after apk uninstallation
  */
 @SuppressLint("MissingPermission")
 fun uninstallApk(pkg: String, context: Context, id: Int = 0) {

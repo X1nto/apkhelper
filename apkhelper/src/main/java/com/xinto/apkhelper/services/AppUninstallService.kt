@@ -39,9 +39,7 @@ class AppUninstallService : Service() {
                     Log.w(logTag, "Unable to start confirmation activity: ${e.stackTraceToString()}")
                 }
             }
-            PackageInstaller.STATUS_SUCCESS -> {
-                statusCallback?.onAppUninstall(id, this)
-            }
+            PackageInstaller.STATUS_SUCCESS -> statusCallback?.onAppUninstall(id, this)
             else -> {
                 intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)?.let {
                     statusCallback?.onAppUninstallFailed(it, id, this)

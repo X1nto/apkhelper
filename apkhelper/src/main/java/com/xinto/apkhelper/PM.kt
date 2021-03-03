@@ -76,7 +76,7 @@ fun installApk(apk: File, context: Context, id: Int = 0) {
 /**
  *
  * Install provided split APK files
- * @param apksPath path to split APKs, library automatically filters out other file types but .apk
+ * @param apksPath path to a directory where multiple .apk files are located, library automatically filters out other file types but .apk (note that library doesn't support .apks file format)
  * @param context Application/Activity context
  * @param id ID of installation, can be useful if you want to trigger different triggers after apk installation
  * @throws IllegalArgumentException if apksPath is not a directory
@@ -85,7 +85,7 @@ fun installApk(apk: File, context: Context, id: Int = 0) {
 fun installSplitApks(apksPath: String, context: Context, id: Int = 0) {
     val files = File(apksPath).listFiles()
     if (files != null) {
-        installSplitApks(files.toList(), context, id)
+        installSplitApks(files, context, id)
     } else {
         throw IllegalArgumentException("Path does not denote a directory")
     }
@@ -97,7 +97,7 @@ fun installSplitApks(apksPath: String, context: Context, id: Int = 0) {
  * @param context Application/Activity context
  * @param id ID of installation, can be useful if you want to trigger different triggers after apk installation
  */
-fun installSplitApks(apks: List<File>, context: Context, id: Int = 0) {
+fun installSplitApks(apks: Array<File>, context: Context, id: Int = 0) {
     val callbackIntent = Intent(context, AppInstallService::class.java).apply {
         putExtra("id", id)
     }

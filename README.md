@@ -100,10 +100,10 @@ VariableHolderKt.setStatusCallback(new SimpleStatusCallback() {
 <details>
 <summary>Kotlin</summary>
 
-This listener allows you to only provide callback for methods you actually need
+This method allows you to only provide callback for methods you actually need
 
 ```kotlin
-setStatusCallback(
+statusCallback = statusCallbackBuilder(
     onInstall = { id, context ->
         Log.i(logTag, "Successfully installed an APK")
     },
@@ -202,10 +202,10 @@ VariableHolderKt.setStatusCallback(new SimpleStatusCallback() {
 <details>
 <summary>Kotlin</summary>
 
-This listener allows you to only provide callback for methods you actually need
+This method allows you to only provide callback for methods you actually need
 
 ```kotlin
-setStatusCallback(
+statusCallback = statusCallbackBuilder(
     onInstall = { id, context ->
         when (id) {
             1 -> Log.i(logTag, "Installed the first APK")

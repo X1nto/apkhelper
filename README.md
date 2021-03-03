@@ -58,7 +58,7 @@ dependencies {
 
 <details>
 <summary>Java</summary>
-Listener with all methods required to be overriden
+Listener with all methods required to be overridden
     
 ```java
 VariableHolderKt.setStatusCallback(new StatusCallback() {
@@ -126,7 +126,7 @@ setStatusCallback(
 <details>
 <summary>Java</summary>
 
-Listener with all methods required to be overriden
+Listener with all methods required to be overridden
 
 ```java
 VariableHolderKt.setStatusCallback(new StatusCallback() {
@@ -187,7 +187,7 @@ VariableHolderKt.setStatusCallback(new SimpleStatusCallback() {
     public void onApkInstall(int id, @NotNull Context context) {
         switch (id) {
             case 1:
-                Log.i(VariableHolderKt.getLogTag(), "Failed to install the first APK");
+                Log.i(VariableHolderKt.getLogTag(), "Installed the first APK");
                 break;
             case 2:
                 Log.i(VariableHolderKt.getLogTag(), "Installed the second APK");
@@ -226,8 +226,8 @@ setStatusCallback(
     },
     onUninstallFailed = { error, id, context ->
         when (id) {
-            1 -> Log.i(logTag, "Failed to uninstall first app")
-            2 -> Log.i(logTag, "Failed to uninstall second app")
+            1 -> Log.i(logTag, "Failed to uninstall the first app")
+            2 -> Log.i(logTag, "Failed to uninstall the second app")
         }
     }
 )
@@ -306,17 +306,17 @@ uninstallApk("com.some.application", this)
 
 ## LICENSE
 ```
-  Copyright 2021 Xinto
+Copyright 2021 Xinto
   
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-  
-     http://www.apache.org/licenses/LICENSE-2.0
-  
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 ```

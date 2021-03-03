@@ -17,7 +17,7 @@ dependencies {
 
 ### Kotlin DSL
 
-```groovy
+```kotlin
 
 dependencies {
     
@@ -294,10 +294,30 @@ PMKt.uninstallApk("com.some.application", this, 0);
 <details>
 <summary>Kotlin</summary>
 
-```java
+```kotlin
 //Inside AppCompatActivity, can be done from anywhere where context is accessible
 //ID is optional, default is 0
 uninstallApk("com.some.application", this)
+```
+</details>
+
+### Customization
+
+By default, whenever library logs something, it uses the "APKHelper" tag, you can customize that using the following code:
+
+<details>
+<summary>Java</summary>
+
+```java
+VariableHolderKt.setLogTag("Your custom log tag");
+```
+</details>
+
+<details>
+<summary>Kotlin</summary>
+
+```kotlin
+logTag = "Your custom log tag"
 ```
 </details>
 

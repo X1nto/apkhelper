@@ -7,7 +7,6 @@ A simple library which allows you to install and uninstall apps on the device
 
 ```groovy
 //In top level build.gradle
-
 allProjects {
     repositories {
         maven { url "https://jitpack.io" }
@@ -26,7 +25,6 @@ dependencies {
 ```kotlin
 
 //In top level build.gradle.kts
-
 allProjects {
     repositories {
         maven(url = "https://jitpack.io")

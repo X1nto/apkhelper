@@ -6,11 +6,17 @@ A simple library which allows you to install and uninstall apps on the device
 ### Groovy DSL
 
 ```groovy
+//In top level build.gradle
 
+allProjects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+
+//In app's build.gradle
 dependencies {
-    
-    implementation 'com.xinto.apkhelper:apkhelper:1.0.0'
-    
+    implementation 'com.github.xinto:apkhelper:1.0.0'
 }
 
 ```
@@ -19,10 +25,17 @@ dependencies {
 
 ```kotlin
 
+//In top level build.gradle.kts
+
+allProjects {
+    repositories {
+        maven(url = "https://jitpack.io")
+    }
+}
+
+//In app's build.gradle.kts
 dependencies {
-    
-    implementation("com.xinto.apkhelper:apkhelper:1.0.0")
-    
+    implementation("com.github.xinto:apkhelper:1.0.0")
 }
 
 ```

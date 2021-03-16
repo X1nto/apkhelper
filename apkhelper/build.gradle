@@ -4,7 +4,7 @@ plugins {
     id 'maven-publish'
 }
 
-group = "com.xinto.apkhelper"
+group = "com.github.xinto"
 version = "1.0.0"
 
 android {
@@ -40,7 +40,7 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.xinto.apkhelper'
+                groupId = 'com.github.xinto'
                 artifactId = 'apkhelper'
                 version = '1.0.0'
             }

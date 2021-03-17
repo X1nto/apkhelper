@@ -46,7 +46,6 @@ dependencies {
 <!-- Required for apk uninstallation -->
 <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
 
-
 <application
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name">

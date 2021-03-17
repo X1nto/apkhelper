@@ -21,8 +21,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInstaller
-import com.xinto.apkhelper.services.AppInstallService
-import com.xinto.apkhelper.services.AppUninstallService
+import com.xinto.apkhelper.services.PackageManagerService
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStream
@@ -44,8 +43,9 @@ fun installApk(apkPath: String, context: Context, id: Int = 0) {
  * @param id ID of the installation, can be useful if you want to trigger different actions after apk installation
  */
 fun installApk(apk: File, context: Context, id: Int = 0) {
-    val callbackIntent = Intent(context, AppInstallService::class.java).apply {
-        putExtra("id", id)
+    val callbackIntent = Intent(context, PackageManagerService::class.java).apply {
+        putExtra(ID, id)
+        putExtra(ACTION, ACTION_INSTALL)
     }
     val pendingIntent = PendingIntent.getService(context, 0, callbackIntent, 0)
     val packageInstaller = context.packageManager.packageInstaller
@@ -98,8 +98,9 @@ fun installSplitApks(apksPath: String, context: Context, id: Int = 0) {
  * @param id ID of installation, can be useful if you want to trigger different actions after apk installation
  */
 fun installSplitApks(apks: Array<File>, context: Context, id: Int = 0) {
-    val callbackIntent = Intent(context, AppInstallService::class.java).apply {
-        putExtra("id", id)
+    val callbackIntent = Intent(context, PackageManagerService::class.java).apply {
+        putExtra(ID, id)
+        putExtra(ACTION, ACTION_INSTALL)
     }
     val pendingIntent = PendingIntent.getService(context, 0, callbackIntent, 0)
     val packageInstaller = context.packageManager.packageInstaller
@@ -136,7 +137,11 @@ fun installSplitApks(apks: Array<File>, context: Context, id: Int = 0) {
  */
 @SuppressLint("MissingPermission")
 fun uninstallApk(pkg: String, context: Context, id: Int = 0) {
-    val callbackIntent = Intent(context, AppUninstallService::class.java)
+    val callbackIntent = Intent(context, PackageManagerService::class.java).apply {
+        putExtra(ID, id)
+        putExtra(ACTION, ACTION_UNINSTALL)
+    }
+
     val pendingIntent = PendingIntent.getService(context, 0, callbackIntent, 0)
     try {
         context.packageManager.packageInstaller.uninstall(pkg, pendingIntent.intentSender)

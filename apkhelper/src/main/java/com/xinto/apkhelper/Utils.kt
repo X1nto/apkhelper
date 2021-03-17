@@ -22,6 +22,12 @@ import com.xinto.apkhelper.callback.StatusCallback
 private var statusCallbackClass: StatusCallback? = null
 private var logTagString = "APKHelper"
 
+const val ID = "id"
+
+const val ACTION = "action"
+const val ACTION_INSTALL = "action_install"
+const val ACTION_UNINSTALL = "action_uninstall"
+
 var statusCallback
     get() = statusCallbackClass
     set(value) {

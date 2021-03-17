@@ -14,8 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ApkManager">
 
-        <service android:name="com.xinto.apkhelper.services.AppInstallService" />
-        <service android:name="com.xinto.apkhelper.services.AppUninstallService" />
+        <service android:name="com.xinto.apkhelper.services.PackageManagerService" />
 
     </application>
 

@@ -21,13 +21,13 @@ import android.content.Intent
 import android.content.pm.PackageInstaller
 import android.os.IBinder
 import android.util.Log
-import com.xinto.apkhelper.logTag
-import com.xinto.apkhelper.statusCallback
+import com.xinto.apkhelper.*
 
-class AppInstallService : Service() {
+class PackageManagerService : Service() {
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
-        val id = intent.getIntExtra("id", 0)
+        val id = intent.getIntExtra(ID, 0)
+        val action = intent.getStringExtra(ACTION)
         when (intent.getIntExtra(PackageInstaller.EXTRA_STATUS, -999)) {
             PackageInstaller.STATUS_PENDING_USER_ACTION -> {
                 Log.i(logTag, "Requesting user confirmation for installation")
@@ -39,10 +39,17 @@ class AppInstallService : Service() {
                     Log.w(logTag, "Unable to start confirmation activity: ${e.stackTraceToString()}")
                 }
             }
-            PackageInstaller.STATUS_SUCCESS -> statusCallback?.onApkInstall(id, this)
+            PackageInstaller.STATUS_SUCCESS -> {
+                when (action) {
+                    ACTION_INSTALL -> statusCallback?.onApkInstall(id, this)
+                    ACTION_UNINSTALL -> statusCallback?.onAppUninstall(id, this)
+                }
+            }
             else -> {
-                intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE)?.let {
-                    statusCallback?.onApkInstallFailed(it, id, this)
+                val error = intent.getStringExtra(PackageInstaller.EXTRA_STATUS_MESSAGE) ?: ""
+                when (action) {
+                    ACTION_INSTALL -> statusCallback?.onApkInstallFailed(error, id, this)
+                    ACTION_UNINSTALL -> statusCallback?.onAppUninstallFailed(error, id, this)
                 }
             }
         }

@@ -55,11 +55,7 @@ dependencies {
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name">
 
-    <!-- Required for apk installation -->
-    <service android:name="com.xinto.apkhelper.services.AppInstallService" />
-    
-    <!-- Required for apk uninstallation -->
-    <service android:name="com.xinto.apkhelper.services.AppUninstallService" />
+    <service android:name="com.xinto.apkhelper.services.PackageManagerService" />
 
 </application/>
 

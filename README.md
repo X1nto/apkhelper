@@ -17,13 +17,11 @@ allProjects {
 dependencies {
     implementation 'com.github.xinto:apkhelper:1.0.0'
 }
-
 ```
 
 ### Kotlin DSL
 
 ```kotlin
-
 //In top level build.gradle.kts
 allProjects {
     repositories {
@@ -35,7 +33,6 @@ allProjects {
 dependencies {
     implementation("com.github.xinto:apkhelper:1.0.0")
 }
-
 ```
 
 ## Usage
@@ -43,7 +40,6 @@ dependencies {
 ### AndroidManifest
 
 ```xml
-
 <!-- Required for apk installation -->
 <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
@@ -58,7 +54,6 @@ dependencies {
     <service android:name="com.xinto.apkhelper.services.PackageManagerService" />
 
 </application/>
-
 ```
 
 ### Register a listener

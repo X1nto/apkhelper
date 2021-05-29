@@ -21,6 +21,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInstaller
+import android.os.Build
 import com.xinto.apkhelper.services.PackageManagerService
 import java.io.File
 import java.io.FileInputStream
@@ -43,11 +44,22 @@ fun installApk(apkPath: String, context: Context, id: Int = 0) {
  * @param id ID of the installation, can be useful if you want to trigger different actions after apk installation
  */
 fun installApk(apk: File, context: Context, id: Int = 0) {
-    val callbackIntent = Intent(context, PackageManagerService::class.java).apply {
+    val callbackIntent = Intent(
+        context,
+        PackageManagerService::class.java
+    ).apply {
         putExtra(ID, id)
         putExtra(ACTION, ACTION_INSTALL)
     }
-    val pendingIntent = PendingIntent.getService(context, 0, callbackIntent, 0)
+
+    val pendingIntent = PendingIntent.getService(
+        context,
+        0,
+        callbackIntent,
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            PendingIntent.FLAG_IMMUTABLE
+        else 0
+    )
     val packageInstaller = context.packageManager.packageInstaller
     val params = PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL)
     val sessionId: Int
@@ -98,11 +110,21 @@ fun installSplitApks(apksPath: String, context: Context, id: Int = 0) {
  * @param id ID of installation, can be useful if you want to trigger different actions after apk installation
  */
 fun installSplitApks(apks: Array<File>, context: Context, id: Int = 0) {
-    val callbackIntent = Intent(context, PackageManagerService::class.java).apply {
+    val callbackIntent = Intent(
+        context,
+        PackageManagerService::class.java
+    ).apply {
         putExtra(ID, id)
         putExtra(ACTION, ACTION_INSTALL)
     }
-    val pendingIntent = PendingIntent.getService(context, 0, callbackIntent, 0)
+    val pendingIntent = PendingIntent.getService(
+        context,
+        0,
+        callbackIntent,
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            PendingIntent.FLAG_IMMUTABLE
+        else 0
+    )
     val packageInstaller = context.packageManager.packageInstaller
     var session: PackageInstaller.Session? = null
     val sessionId: Int
@@ -142,7 +164,15 @@ fun uninstallApk(pkg: String, context: Context, id: Int = 0) {
         putExtra(ACTION, ACTION_UNINSTALL)
     }
 
-    val pendingIntent = PendingIntent.getService(context, 0, callbackIntent, 0)
+    val pendingIntent = PendingIntent.getService(
+        context,
+        0,
+        callbackIntent,
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            PendingIntent.FLAG_IMMUTABLE
+        else 0
+    )
+
     try {
         context.packageManager.packageInstaller.uninstall(pkg, pendingIntent.intentSender)
     } catch (e: Exception) {

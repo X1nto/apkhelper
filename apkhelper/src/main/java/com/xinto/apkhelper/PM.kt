@@ -56,8 +56,8 @@ fun installApk(apk: File, context: Context, id: Int = 0) {
         context,
         0,
         callbackIntent,
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-            PendingIntent.FLAG_IMMUTABLE
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+            PendingIntent.FLAG_MUTABLE
         else 0
     )
     val packageInstaller = context.packageManager.packageInstaller
@@ -121,8 +121,8 @@ fun installSplitApks(apks: Array<File>, context: Context, id: Int = 0) {
         context,
         0,
         callbackIntent,
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-            PendingIntent.FLAG_IMMUTABLE
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
+            PendingIntent.FLAG_MUTABLE
         else 0
     )
     val packageInstaller = context.packageManager.packageInstaller

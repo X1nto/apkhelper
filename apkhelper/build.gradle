@@ -8,11 +8,11 @@ group = "com.github.xinto"
 version = "1.0.1"
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion "android-S"
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion "S"
         versionCode 101
         versionName "1.0.1"
 
@@ -45,8 +45,4 @@ afterEvaluate {
             }
         }
     }
-}
-
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

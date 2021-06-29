@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.xinto"
-version = "1.0.2"
+version = "1.1.1"
 
 android {
     compileSdkVersion "android-S"

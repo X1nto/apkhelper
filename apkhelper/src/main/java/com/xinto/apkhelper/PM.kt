@@ -43,6 +43,7 @@ fun installApk(apkPath: String, context: Context, id: Int = 0) {
  * @param context Application/Activity context
  * @param id ID of the installation, can be useful if you want to trigger different actions after apk installation
  */
+@SuppressLint("UnspecifiedImmutableFlag")
 fun installApk(apk: File, context: Context, id: Int = 0) {
     val callbackIntent = Intent(
         context,
@@ -56,9 +57,7 @@ fun installApk(apk: File, context: Context, id: Int = 0) {
         context,
         0,
         callbackIntent,
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
-            PendingIntent.FLAG_MUTABLE
-        else 0
+        0
     )
     val packageInstaller = context.packageManager.packageInstaller
     val params = PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL)
@@ -109,6 +108,7 @@ fun installSplitApks(apksPath: String, context: Context, id: Int = 0) {
  * @param context Application/Activity context
  * @param id ID of installation, can be useful if you want to trigger different actions after apk installation
  */
+@SuppressLint("UnspecifiedImmutableFlag")
 fun installSplitApks(apks: Array<File>, context: Context, id: Int = 0) {
     val callbackIntent = Intent(
         context,
@@ -121,9 +121,7 @@ fun installSplitApks(apks: Array<File>, context: Context, id: Int = 0) {
         context,
         0,
         callbackIntent,
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S)
-            PendingIntent.FLAG_MUTABLE
-        else 0
+        0
     )
     val packageInstaller = context.packageManager.packageInstaller
     var session: PackageInstaller.Session? = null
